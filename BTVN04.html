@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function book(name, author, publishedYear) {
+            this.name = name;
+            this.author = author;
+            this.publishedYear = publishedYear;
+        }
+        var Library = {
+            book1: {
+                title: "Sách làm giàu",
+                author: "Đức Anh",
+                publishedYear: "2023",
+            },
+            book2: {
+                title: "Sách IT",
+                author: "Gia Bảo",
+                publishedYear: "2022",
+            },
+            book3: {
+                title: "Sách toán học",
+                author: "Thế Minh",
+                publishedYear: "2020",
+            },
+        };
+        var Book = []; 
+        Book.push(Library.book1);
+        Book.push(Library.book2);
+        Book.push(Library.book3);
+        let n = +prompt("Nhập số lượng sách muốn nhập thêm");
+        for(let i=0;i<n;i++){
+            let name = prompt("Nhập tên cho sách");
+            let author = prompt("Nhập tên tác giả");
+            let publishedYear = prompt("Nhập năm sáng tác");
+            let new_book = new book(name,author,publishedYear);
+            Book.push(new_book);
+        }
+        console.log(Book);
+    </script>
+</body>
+</html>

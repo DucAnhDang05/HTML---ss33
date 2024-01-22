@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Job(id, title, description, completed) {
+            this.id = id;
+            this.description = description;
+            this.completed = true;
+            this.title = title;
+        }
+
+        var jobs = {
+            job1: {
+                id: "1",
+                title: "Buổi sáng",
+                description: "Ăn sáng",
+                completed: true,
+            },
+            job2: {
+                id: "2",
+                title: "Buổi trưa",
+                description: "Ăn trưa",
+                completed: true,
+            },
+            job3: {
+                id: "3",
+                title: "Buổi tối",
+                description: "Ăn tối",
+                completed: false,
+            },
+        };
+
+        var jobList = [];
+        jobList.push(jobs.job1);
+        jobList.push(jobs.job2);
+        jobList.push(jobs.job3);
+
+        let choice;
+            choice = +prompt("1. Thêm công việc mới\n2. In ra danh sách công việc\n3. Tìm kiếm công việc theo id");
+            switch (choice) {
+                case 1:
+                    let id = +prompt("Nhập vào id của công việc");
+                    let title = prompt("Nhập tiêu đề của công việc");
+                    let description = prompt("Nhập mô tả của công việc");
+                    let completed = prompt("Nhập công việc đã hoàn thành hay chưa (true or false)");
+                    let newJob = new Job(id, title, description, completed);
+                    jobList.push(newJob);
+                    break;
+                case 2:
+                    console.log(jobList);
+                    break;
+                case 3:
+                    let found = false;
+                    let searchId = +prompt("Nhập vào id công việc muốn tìm kiếm");
+                    for (let i = 0; i < jobList.length; i++) {
+                        if (jobList[i].id === searchId.toString()) {
+                            found = true;
+                            console.log(jobList[i]);
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        console.log("Không tìm thấy công việc có id " + searchId);
+                    }
+                    break;
+                default:
+                    console.log("Lựa chọn không hợp lệ");
+                    break;
+            }
+    </script>
+</body>
+</html>

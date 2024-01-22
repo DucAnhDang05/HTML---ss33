@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Book(name, author, publishedYear,borrow,return1,available) {
+            this.name = name;
+            this.author = author;
+            this.publishedYear = publishedYear;
+            this.borrow = false;
+            this.return1 = true;
+            this.available = true;
+        }
+
+        var Library = {
+            book1: {
+                title: "Sách vật lý",
+                author: "Đức Anh",
+                publishedYear: "2023",
+                borrow: false,
+                return1: true,
+                available: true,
+            },
+            book2: {
+                title: "Sách IT",
+                author: "Gia Bảo",
+                publishedYear: "2022",
+                borrow: false,
+                return1: true,
+                available: true,
+            },
+            book3: {
+                title: "Sách toán học",
+                author: "Thế Minh",
+                publishedYear: "2020",
+                borrow: true,
+                return1: false,
+                available: false,
+            },
+        };
+
+        var BookList = [];
+        BookList.push(Library.book1);
+        BookList.push(Library.book2);
+        BookList.push(Library.book3);
+
+        let n = +prompt("Nhập số lượng sách muốn nhập thêm");
+        for (let i = 0; i < n; i++) {
+            let name = prompt("Nhập tên cho sách");
+            let author = prompt("Nhập tên tác giả");
+            let publishedYear = prompt("Nhập năm sáng tác");
+            let borrow = prompt("Nhập vào sách đã cho mượn hay chưa (true or false)");
+
+            if (borrow === "true") {
+                return1 = false;
+                available = false;
+            } else {
+                return1 = true;
+                available = true;
+            }
+
+            let new_book = new Book(name, author, publishedYear,borrow,return1,available);
+            BookList.push(new_book);
+        }
+
+        function check(name, arr) {
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i].name === name) {
+                    return arr[i].borrow;
+                }
+            }
+        }
+
+        let checkBook = prompt("Nhập vào sách muốn kiểm tra");
+        let bookStatus = check(checkBook, BookList);
+
+        if (bookStatus === "true") {
+            console.log(checkBook + " đang được cho mượn");
+        } else {
+            console.log(checkBook + " chưa có ai mượn");
+        }
+    </script>
+</body>
+</html>
